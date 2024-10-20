@@ -28,8 +28,10 @@
     --colour-900: #1d1f22;
     --colour-1000: #151619;
     --primary: white;
+    --secondary: #7c8187;
     --primary-background: #2b2d31;
     --secondary-background: #1d1f22;
+    --tertiary-background: #5a6069;
     --icon-primary: #7c8187;
     --icon-primary-hover: #e46643;
     --button-primary-background: #e46643;
@@ -46,6 +48,12 @@
     --header-logo-inline-inset-sidebar-closed: calc(var(--sidebar-inline-size) * -1 - var(--header-logo-inline-inset));
     --header-logo-inline-inset-sidebar-open: var(--header-logo-inline-inset);
     --menu-button-size: #{px2rem(56)};
+    --app-bar-block-padding: #{px2rem(8)};
+    --app-bar-inline-padding: #{px2rem(80)} #{px2rem(8)};
+    --app-bar-input-block-padding: #{px2rem(6)};
+    --app-bar-input-block-padding-hover: #{px2rem(5)};
+    --app-bar-input-gap: #{px2rem(3)} #{px2rem(16)};
+    --app-bar-buttons-gap: #{px2rem(24)};
     --sidebar-inline-size: #{px2rem(250)};
     --sidebar-block-padding: #{px2rem(72)} #{px2rem(24)};
     --sidebar-inline-padding: #{px2rem(24)};
@@ -64,20 +72,26 @@
     --mode-choice-button-radius: #{px2rem(14.5)};
     --mode-choice-button-gap: #{px2rem(10)};
     --mode-choice-button-inline-inset: #{px2rem(6)};
-    @include css-media-queries($from-breakpoint: two-column-editor) {
-        --menu-button-size: #{px2rem(72)};
-        --toggle-preview-block-inset: #{px2rem(84)};
-        --save-button-padding: #{px2rem(11)} #{px2rem(16)};
-    }
-    @include css-media-queries($from-breakpoint: wide-app-bar) {
-        --header-logo-inline-inset-sidebar-closed: calc(var(--header-logo-inline-inset) + var(--menu-button-size));
-        --header-logo-inline-inset-sidebar-open: calc(var(--sidebar-inline-size) + var(--header-logo-inline-inset-sidebar-closed));
-        --sidebar-block-start-padding: #{px2rem(27)};
-    }
     
     // Transitions
     --button-transition-duration: 150ms;
     --sidebar-transition-duration: 200ms;
     --toggle-preview-transition-duration: 200ms;
     --mode-choice-button-transition-duration: 200ms;
+
+    @include css-media-queries($from-breakpoint: two-column-editor) {
+        --menu-button-size: #{px2rem(72)};
+        --app-bar-block-padding: #{px2rem(17)} #{px2rem(14)};
+        --app-bar-inline-padding: #{px2rem(96)} #{px2rem(16)};
+        --toggle-preview-block-inset: #{px2rem(84)};
+        --save-button-padding: #{px2rem(11)} #{px2rem(16)};
+    }
+    @include css-media-queries($from-breakpoint: wide-app-bar) {
+        --header-logo-block-padding: #{px2rem(14)};
+        --header-logo-inline-end-padding: #{px2rem(30)};
+        --header-logo-inline-inset-sidebar-closed: calc(var(--header-logo-inline-inset) + var(--menu-button-size));
+        --header-logo-inline-inset-sidebar-open: calc(var(--sidebar-inline-size) + var(--header-logo-inline-inset-sidebar-closed));
+        --app-bar-inline-start-padding: #{px2rem(281)};
+        --sidebar-block-start-padding: #{px2rem(27)};
+    }
 }

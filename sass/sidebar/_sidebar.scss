@@ -8,6 +8,10 @@
     color: var(--primary);
     background: var(--secondary-background);
     padding: var(--sidebar-block-padding) var(--sidebar-inline-padding);
+    h2,
+    time {
+        color: var(--secondary);
+    }
     h2 {
         margin-block-end: var(--sidebar-title-block-margin);
     }

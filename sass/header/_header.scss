@@ -1,0 +1,14 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+
+/** @section Header */
+#header {
+    @include css-media-queries($from-breakpoint: wide-app-bar) {
+        h1 {
+            padding-block: var(--header-logo-block-padding);
+            padding-inline-end: var(--header-logo-inline-end-padding);
+            border-inline-end: 1px solid var(--tertiary-background);
+            inset-block-start: calc(var(--header-logo-block-inset) - var(--header-logo-block-padding));
+        }
+    }
+}

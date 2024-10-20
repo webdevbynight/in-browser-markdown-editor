@@ -13,6 +13,7 @@ textarea, #preview :is(pre, code) {
 }
 .app-bar {
     font-size: var(--app-bar-text);
+    line-height: 1.1;
     label {
         font-size: var(--app-bar-label-text);
         font-weight: 300;

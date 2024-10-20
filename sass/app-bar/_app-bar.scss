@@ -1,0 +1,77 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+
+/** @section App bar */
+.app-bar {
+    color: var(--primary);
+    background: var(--primary-background);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: var(--app-bar-block-padding);
+    padding-inline: var(--app-bar-inline-padding);
+    p {
+        &:first-of-type {
+            display: inline-grid;
+            grid-template-columns: 14px calc((375 - 214) / 375 * 100dvi);
+            gap: var(--app-bar-input-gap);
+            &::before {
+                background: url("images/sprites.svg") no-repeat left -16px;
+                align-self: center;
+                width: 14px;
+                height: 16px;
+                content: "";
+            }
+        }
+        &:last-of-type {
+            display: inline-flex;
+            gap: var(--app-bar-buttons-gap);
+            button {
+                flex-shrink: 0;
+            }
+        }
+    }
+    input {
+        color: inherit;
+        background: inherit;
+        padding-block: var(--app-bar-input-block-padding);
+        border: none;
+        &:hover,
+        &:focus {
+            padding-block-end: var(--app-bar-input-block-padding-hover);
+            border-block-end: 1px solid;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    label {
+        color: var(--secondary);
+    }
+    @include css-media-queries($below-breakpoint: two-column-editor) {
+        label {
+            @include css-visually-hidden;
+        }
+    }
+    @include css-media-queries($from-breakpoint: two-column-editor) {
+        p {
+            &:first-of-type {
+                &::before {
+                    grid-row: span 2;
+                }
+            }
+        }
+        input {
+            padding-block-start: 0;
+        }
+    }
+    @include css-media-queries($from-breakpoint: wide-app-bar) {
+        padding-inline-start: var(--app-bar-inline-start-padding);
+        p {
+            &:first-of-type {
+                grid-template-columns: 14px calc((1440 - 1060) / 1440 * 100dvi);
+            }
+        }
+    }
+}
