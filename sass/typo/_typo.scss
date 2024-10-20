@@ -3,10 +3,23 @@
 /** @section Typography */
 body {
     font-family: var(--sans-font);
+    line-height: normal;
 }
 textarea, #preview :is(pre, code) {
     font-family: var(--mono-font);
 }
 #preview {
     font-family: var(--slab-font);
+}
+.app-bar {
+    font-size: var(--app-bar-text);
+}
+#sidebar {
+    font-size: var(--sidebar-text);
+    h2 {
+        font-size: var(--sidebar-title-text);
+    }
+    time {
+        font-size: var(--sidebar-date-text);
+    }
 }

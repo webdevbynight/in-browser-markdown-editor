@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+// Mixins for buttons
+@mixin primary-button {
+    color: var(--primary);
+    background: var(--button-primary-background);
+    border-radius: var(--button-radius);
+}

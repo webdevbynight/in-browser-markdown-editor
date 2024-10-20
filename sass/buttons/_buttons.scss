@@ -1,0 +1,187 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+@use "./mixins" as mixins;
+
+/** @section Buttons */
+button {
+    box-sizing: border-box;
+    border: none;
+    .sr-only {
+        @include css-visually-hidden;
+    }
+    #header & {
+        color: var(--primary);
+        background: var(--menu-button-background);
+        inline-size: var(--menu-button-size);
+        aspect-ratio: 1;
+        transition: background var(--button-transition-duration) ease-in;
+        svg {
+            display: block;
+        }
+        use {
+            stroke: var(--primary);
+            stroke-width: 2;
+            transition: opacity var(--sidebar-transition-duration) ease-in;
+            &.inactive {
+                transform: translate(21px, 27px);
+            }
+            &.active {
+                opacity: 0;
+                transform: rotate(45deg) translate(21px, 36px);
+                transform-origin: center;
+            }
+        }
+        &:hover,
+        &:focus {
+            background: var(--menu-button-background-hover);
+        }
+        &.active {
+            use {
+                &.inactive {
+                    opacity: 0;
+                }
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .app-bar & {
+        &[type="button"] {
+            path {
+                fill: var(--icon-primary);
+                fill-rule: evenodd;
+                clip-rule: evenodd;
+                transition: fill var(--button-transition-duration) ease-in;
+            }
+            &:hover,
+            &:focus {
+                path {
+                    fill: var(--icon-primary-hover);
+                }
+            }
+        }
+        &[type="submit"] {
+            @include mixins.primary-button;
+            display: flex;
+            gap: var(--save-button-gap);
+            align-items: center;
+            padding: var(--save-button-padding);
+            transition: background var(--button-transition-duration) ease-in;
+            &::before {
+                background: url("images/sprites.svg") no-repeat;
+                width: 16px;
+                aspect-ratio: 1;
+                content: "";
+            }
+            &:hover,
+            &:focus {
+                background: var(--button-primary-background-hover);
+            }
+        }
+    }
+    .toggle-preview & {
+        inline-size: var(--toggle-preview-size);
+        aspect-ratio: 1;
+        path {
+            fill: var(--icon-primary);
+            &.inactive {
+                transform: translate(0, 1.5px);
+            }
+            &.active {
+                opacity: 0;
+            }
+        }
+        &:hover,
+        &:focus {
+            path {
+                fill: var(--icon-primary-hover);
+            }
+        }
+        &.active {
+            path {
+                &.inactive {
+                    opacity: 0;
+                }
+                &.active {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    #sidebar > p & {
+        @include mixins.primary-button;
+        min-block-size: var(--new-document-button-block-size);
+        &::before {
+            content: "+ ";
+        }
+    }
+    @include css-media-queries($below-breakpoint: two-column-editor) {
+        .app-bar & {
+            &[type="submit"] {
+                span {
+                    @include css-visually-hidden;
+                }
+            }
+        }
+    }
+}
+#sidebar form {
+    p {
+        display: flex;
+        gap: var(--mode-choice-button-gap);
+        align-items: center;
+        &::before,
+        &::after {
+            background: url("images/sprites.svg") no-repeat;
+            display: block;
+            width: 18px;
+            content: "";
+        }
+        &::before {
+            background-position-y: -32px;
+            height: 16px;
+        }
+        &::after {
+            background-position-y: -48px;
+            aspect-ratio: 1;
+        }
+        &:has(:checked) {
+            label {
+                &::after {
+                    inset-inline-start: calc(var(--mode-choice-button-size) - var(--mode-choice-button-inner-size) - var(--mode-choice-button-inline-inset));
+                }
+            }
+        }
+    }
+    input[type="checkbox"],
+    .sr-only {
+        @include css-visually-hidden;
+    }
+    label {
+        position: relative;
+        cursor: pointer;
+        &::before,
+        &::after {
+            display: block;
+            content: "";
+        }
+        &::before {
+            background: var(--mode-choice-button-primary);
+            inline-size: var(--mode-choice-button-size);
+            aspect-ratio: 2 / 1;
+            border-radius: var(--mode-choice-button-radius);
+        }
+        &::after {
+            background: var(--mode-choice-button-secondary);
+            inline-size: var(--mode-choice-button-inner-size);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            inset-block-start: 50%;
+            inset-inline-start: var(--mode-choice-button-inline-inset);
+            transition: inset-inline-start var(--mode-choice-button-transition-duration) ease-in;
+        }
+    }
+}

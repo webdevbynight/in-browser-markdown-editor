@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="72" height="72" viewBox="0 0 72 72">
+    <style type="text/css">
+        rect:not(.test) {
+            fill: #35393f;
+            width: 72px;
+            height: 72px;
+        }
+        use {
+            stroke: white;
+            stroke-width: 2;
+        }
+        .inactive {
+            transform: translate(21px, 27px);
+        }
+        .active {
+            transform: rotate(45deg) translate(21px, 36px);
+            transform-origin: center;
+        }
+    </style>
+    <defs>
+        <g id="burger">
+            <line x1="0" x2="30" y1="1" y2="1"/>
+            <line x1="0" x2="30" y1="9" y2="9"/>
+            <line x1="0" x2="30" y1="17" y2="17"/>
+        </g>
+        <g id="cross">
+            <line x1="0" x2="30" y1="0" y2="0"/>
+            <line x1="0" x2="30" y1="0" y2="0" transform="rotate(90 15, 0)"/>
+        </g>
+    </defs>
+    <rect width="72" height="72"/>
+    <use class="inactive" href="#burger"/>
+    <use class="active" href="#cross"/>
+</svg>

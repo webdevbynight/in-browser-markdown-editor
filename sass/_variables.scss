@@ -8,26 +8,64 @@
     --sans-font: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
     --slab-font: "Roboto Slab", "DejaVu Serif", "Sitka Small", serif;
     --mono-font: "Roboto Mono", "DejaVu Sans Mono", monospace;
+    --app-bar-text: #{px2rem(15)};
+    --sidebar-text: #{px2rem(15)};
+    --sidebar-title-text: #{px2rem(14)};
+    --sidebar-date-text: #{px2rem(13)};
+
+    // Colours
+    --colour-100: white;
+    --colour-200: #f5f5f5;
+    --colour-300: #e4e4e4;
+    --colour-400: #c1c4cb;
+    --colour-500: #7c8187;
+    --colour-600: #5a6069;
+    --colour-700: #35393f;
+    --colour-800: #2b2d31;
+    --colour-900: #1d1f22;
+    --colour-1000: #151619;
+    --primary: white;
+    --icon-primary: #7c8187;
+    --icon-primary-hover: #e46643;
+    --button-primary-background: #e46643;
+    --button-primary-background-hover: #f39765;
+    --menu-button-background: #35393f;
+    --menu-button-background-hover: #e46643;
+    --mode-choice-button-primary: #5a6069;
+    --mode-choice-button-secondary: white;
 
     // Boxes, margins, paddings, gaps and shadows
+    --button-radius: #{px2rem(4)};
     --header-logo-block-inset: #{px2rem(27)};
     --header-logo-inline-inset: #{px2rem(24)};
     --header-logo-inline-inset-sidebar-closed: calc(var(--sidebar-inline-size) * -1 - var(--header-logo-inline-inset));
     --header-logo-inline-inset-sidebar-open: var(--header-logo-inline-inset);
     --menu-button-size: #{px2rem(56)};
     --sidebar-inline-size: #{px2rem(250)};
+    --toggle-preview-size: #{px2rem(16)};
     --toggle-preview-block-inset: #{px2rem(68)};
     --toggle-preview-inline-inset: #{px2rem(16)};
+    --save-button-padding: #{px2rem(12)};
+    --save-button-gap: #{px2rem(8)};
+    --new-document-button-block-size: #{px2rem(40)};
+    --mode-choice-button-size: #{px2rem(48)};
+    --mode-choice-button-inner-size: #{px2rem(12)};
+    --mode-choice-button-radius: #{px2rem(14.5)};
+    --mode-choice-button-gap: #{px2rem(10)};
+    --mode-choice-button-inline-inset: #{px2rem(6)};
     @include css-media-queries($from-breakpoint: two-column-editor) {
         --menu-button-size: #{px2rem(72)};
         --toggle-preview-block-inset: #{px2rem(84)};
+        --save-button-padding: #{px2rem(11)} #{px2rem(16)};
     }
     @include css-media-queries($from-breakpoint: wide-app-bar) {
         --header-logo-inline-inset-sidebar-closed: calc(var(--header-logo-inline-inset) + var(--menu-button-size));
         --header-logo-inline-inset-sidebar-open: calc(var(--sidebar-inline-size) + var(--header-logo-inline-inset-sidebar-closed));
     }
-
+    
     // Transitions
+    --button-transition-duration: 250ms;
     --sidebar-transition-duration: 300ms;
     --toggle-preview-transition-duration: 300ms;
+    --mode-choice-button-transition-duration: 300ms;
 }
