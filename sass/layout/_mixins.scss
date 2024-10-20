@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+// Mixins for global layout
+@mixin column-flexbox {
+    display: flex;
+    flex-direction: column;
+}
+@mixin flex-stretching {
+    flex: 1;
+}

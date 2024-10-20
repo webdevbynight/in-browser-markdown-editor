@@ -1,0 +1,92 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+@use "./mixins" as mixins;
+
+/** @section Global layout */
+html,
+body {
+    overflow-x: hidden;
+}
+body {
+    @include mixins.column-flexbox;
+    min-block-size: 100dvb;
+}
+main {
+    @include mixins.flex-stretching;
+    display: grid;
+    grid-template-columns: var(--sidebar-inline-size) 1fr;
+    grid-template-areas: "sidebar .";
+    inline-size: calc(var(--sidebar-inline-size) + 100dvi);
+    transform: translateX(calc(var(--sidebar-inline-size) * -1));
+    transition: transform var(--sidebar-transition-duration) ease-in;
+    #sidebar {
+        grid-area: sidebar;
+    }
+    &.active-sidebar {
+        transform: translateX(0);
+    }
+}
+#header {
+    h1,
+    nav {
+        transition: inset-inline-start var(--sidebar-transition-duration) ease-in;
+    }
+    h1 {
+        position: absolute;
+        inset-block-start: var(--header-logo-block-inset);
+        inset-inline-start: var(--header-logo-inline-inset-sidebar-closed);
+        z-index: 1;
+    }
+    nav {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        z-index: 1;
+    }
+    &.active-sidebar {
+        h1 {
+            inset-inline-start: var(--header-logo-inline-inset-sidebar-open);
+        }
+        nav {
+            inset-inline-start: calc(var(--sidebar-inline-size));
+        }
+    }
+}
+#app {
+    @include mixins.column-flexbox;
+    position: relative;
+    overflow-x: hidden;
+    .toggle-preview {
+        position: absolute;
+        inset-block-start: var(--toggle-preview-block-inset);
+        inset-inline-end: var(--toggle-preview-inline-inset);
+        z-index: 1;
+    }
+}
+#editor {
+    @include mixins.flex-stretching;
+    display: grid;
+    grid-template-columns: repeat(2, 100dvi);
+    inline-size: 200dvi;
+    transform: translateX(0);
+    transition: var(--toggle-preview-transition-duration) ease-in;
+    transition-property: transform;
+    &.active-preview {
+        transform: translateX(-100dvi);
+    }
+    @include css-media-queries($from-breakpoint: two-column-editor) {
+        /**
+         * [1] The transition does not apply fluidly when `repeat()` is used
+         */
+        grid-template-columns: 1fr 1fr; /* [1] */
+        inline-size: 100%;
+        transform: translateX(0);
+        transform-origin: left;
+        transition-property: grid-template-columns, inline-size, transform;
+        &.active-preview {
+            grid-template-columns: 1fr 2fr;
+            inline-size: 150%;
+            transform: translateX(calc(-100% / 3));
+        }
+    }
+}

@@ -1,4 +1,6 @@
 @charset "utf-8";
+@use "./base/functions" as *;
+@use "./base/mixins" as *;
 
 // Variables
 :root {
@@ -6,4 +8,26 @@
     --sans-font: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
     --slab-font: "Roboto Slab", "DejaVu Serif", "Sitka Small", serif;
     --mono-font: "Roboto Mono", "DejaVu Sans Mono", monospace;
+
+    // Boxes, margins, paddings, gaps and shadows
+    --header-logo-block-inset: #{px2rem(27)};
+    --header-logo-inline-inset: #{px2rem(24)};
+    --header-logo-inline-inset-sidebar-closed: calc(var(--sidebar-inline-size) * -1 - var(--header-logo-inline-inset));
+    --header-logo-inline-inset-sidebar-open: var(--header-logo-inline-inset);
+    --menu-button-size: #{px2rem(56)};
+    --sidebar-inline-size: #{px2rem(250)};
+    --toggle-preview-block-inset: #{px2rem(68)};
+    --toggle-preview-inline-inset: #{px2rem(16)};
+    @include css-media-queries($from-breakpoint: two-column-editor) {
+        --menu-button-size: #{px2rem(72)};
+        --toggle-preview-block-inset: #{px2rem(84)};
+    }
+    @include css-media-queries($from-breakpoint: wide-app-bar) {
+        --header-logo-inline-inset-sidebar-closed: calc(var(--header-logo-inline-inset) + var(--menu-button-size));
+        --header-logo-inline-inset-sidebar-open: calc(var(--sidebar-inline-size) + var(--header-logo-inline-inset-sidebar-closed));
+    }
+
+    // Transitions
+    --sidebar-transition-duration: 300ms;
+    --toggle-preview-transition-duration: 300ms;
 }

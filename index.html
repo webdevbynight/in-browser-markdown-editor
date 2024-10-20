@@ -46,22 +46,29 @@
         <header id="header">
             <h1><img src="./images/logo-markdown.svg" alt="Logo Markdown" width="130" height="12"></h1>
             <nav>
-                <ul>
-                    <li><button type="button">Show sidebar</button></li>
-                    <li><button type="button">Hide sidebar</button></li>
-                </ul>
+                <button type="button">Show sidebar</button>
             </nav>
         </header>
 
         <main>
 
             <!-- Begin form -->
-            <form>
-                <p>
-                    <label for="document-name">Document name</label>
-                    <input id="document-name" name="document-name" type="text" value="welcome.md">
-                </p>
-                <p>
+            <form id="app">
+                <div class="app-bar">
+                    <p>
+                        <label for="document-name">Document name</label>
+                        <input id="document-name" name="document-name" type="text" value="welcome.md">
+                    </p>
+                    <p>
+                        <button type="button">
+                            Delete
+                        </button>
+                        <button type="submit">
+                            <span>Save changes</span>
+                        </button>
+                    </p>
+                </div>
+                <p class="toggle-preview">
                     <button type="button">Show preview</button>
                 </p>
                 <div id="editor">
@@ -141,7 +148,7 @@ This markdown editor allows for inline-code snippets, like this: `<p>I'm inline<
             <!-- End form -->
             
             <!-- Begin sidebar -->
-            <aside id="sidebar">
+            <aside id="sidebar" class="active">
                 <h2>My documents</h2>
                 <p>
                     <button type="button">New Document</button>
