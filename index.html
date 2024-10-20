@@ -43,6 +43,138 @@
 
     <body>
 
+        <header id="header">
+            <h1><img src="./images/logo-markdown.svg" alt="Logo Markdown" width="130" height="12"></h1>
+            <nav>
+                <ul>
+                    <li><button type="button">Show sidebar</button></li>
+                    <li><button type="button">Hide sidebar</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+
+            <!-- Begin form -->
+            <form>
+                <p>
+                    <label for="document-name">Document name</label>
+                    <input id="document-name" name="document-name" type="text" value="welcome.md">
+                </p>
+                <p>
+                    <button type="button">Show preview</button>
+                </p>
+                <div id="editor">
+                    <p>
+                        <label for="markdown">Markdown</label>
+                        <textarea id="markdown" name="markdown">
+# Welcome to Markdown
+
+Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.
+
+## How to use this?
+
+1. Write markdown in the markdown editor window
+2. See the rendered markdown in the preview window
+
+### Features
+
+- Create headings, paragraphs, links, blockquotes, inline-code, code blocks, and lists
+- Name and save the document to access again later
+- Choose between Light or Dark mode depending on your preference
+
+> This is an example of a blockquote. If you would like to learn more about markdown syntax, you can visit this [markdown cheatsheet](https://www.markdownguide.org/cheat-sheet/).
+
+#### Headings
+
+To create a heading, add the hash sign (#) before the heading. The number of number signs you use should correspond to the heading level. You'll see in this guide that we've used all six heading levels (not necessarily in the correct way you should use headings!) to illustrate how they should look.
+
+##### Lists
+
+You can see examples of ordered and unordered lists above.
+
+###### Code Blocks
+
+This markdown editor allows for inline-code snippets, like this: `<p>I'm inline</p>`. It also allows for larger code blocks like this:
+
+```
+<main>
+  <h1>This is a larger code block</h1>
+</main>
+```
+                        </textarea>
+                    </p>
+                    <section>
+                        <h2>Preview</h2>
+                        <div id="preview">
+                            <h1>Welcome to Markdown</h1>
+                            <p>Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.</p>
+                            <h2>How to use this?</h2>
+                            <ol>
+                                <li>Write markdown in the markdown editor window</li>
+                                <li>See the rendered markdown in the preview window</li>
+                            </ol>
+                            <h3>Features</h3>
+                            <ul>
+                                <li>Create headings, paragraphs, links, blockquotes, inline-code, code blocks, and lists</li>
+                                <li>Name and save the document to access again later</li>
+                                <li>Choose between Light or Dark mode depending on your preference</li>
+                            </ul>
+                            <blockquote>
+                                <p>This is an example of a blockquote. If you would like to learn more about markdown syntax, you can visit this <a href="https://www.markdownguide.org/cheat-sheet/">markdown cheatsheet</a>.</p>
+                            </blockquote>
+                            <h4>Headings</h4>
+                            <p>To create a heading, add the hash sign (#) before the heading. The number of number signs you use should correspond to the heading level. You'll see in this guide that we've used all six heading levels (not necessarily in the correct way you should use headings!) to illustrate how they should look.</p>
+                            <h5>Lists</h5>
+                            <p>You can see examples of ordered and unordered lists above.</p>
+                            <h6>Code Blocks</h6>
+                            <p>This markdown editor allows for inline-code snippets, like this: <code>&lt;p&gt;I'm inline&lt;/p&gt;</code>. It also allows for larger code blocks like this:</p>
+                            <pre>
+&lt;main&gt;
+  &lt;h1&gt;This is a larger code block&lt;/h1&gt;
+&lt;/main&gt;
+                            </pre>
+                        </div>
+                    </section>
+                </div>
+            </form>
+            <!-- End form -->
+            
+            <!-- Begin sidebar -->
+            <aside id="sidebar">
+                <h2>My documents</h2>
+                <p>
+                    <button type="button">New Document</button>
+                </p>
+                <ul>
+                    <li>
+                        <button type="button">
+                            <time datetime="2022-04-01">01 April 2022</time>
+                            <span class="document-name">untitled-document.md</span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button">
+                            <time datetime="2022-04-01">01 April 2022</time>
+                            <span class="document-name">welcome.md</span>
+                        </button>
+                    </li>
+                </ul>
+                
+                <!-- Begin mode choice -->
+                <form>
+                    <p>
+                        <label for="mode-choice">Switch to light mode</label>
+                        <input id="mode-choice" name="mode-choice" type="checkbox">
+                    </p>
+                </form>
+                <!-- End mode choice -->
+
+            </aside>
+            <!-- End sidebar -->
+
+        </main>
+
         <!-- Begin scripts -->
         <script src="./js/index.js" type="module"></script>
         <!-- End scripts -->
