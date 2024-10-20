@@ -28,6 +28,8 @@
     --colour-900: #1d1f22;
     --colour-1000: #151619;
     --primary: white;
+    --primary-background: #2b2d31;
+    --secondary-background: #1d1f22;
     --icon-primary: #7c8187;
     --icon-primary-hover: #e46643;
     --button-primary-background: #e46643;
@@ -45,6 +47,12 @@
     --header-logo-inline-inset-sidebar-open: var(--header-logo-inline-inset);
     --menu-button-size: #{px2rem(56)};
     --sidebar-inline-size: #{px2rem(250)};
+    --sidebar-block-padding: #{px2rem(72)} #{px2rem(24)};
+    --sidebar-inline-padding: #{px2rem(24)};
+    --sidebar-title-block-margin: #{px2rem(29)};
+    --sidebar-list-block-margin: #{px2rem(26)};
+    --sidebar-list-block-margin-first: #{px2rem(24)};
+    --sidebar-list-item-gap: #{px2rem(3)} #{px2rem(16)};
     --toggle-preview-size: #{px2rem(16)};
     --toggle-preview-block-inset: #{px2rem(68)};
     --toggle-preview-inline-inset: #{px2rem(16)};
@@ -64,11 +72,12 @@
     @include css-media-queries($from-breakpoint: wide-app-bar) {
         --header-logo-inline-inset-sidebar-closed: calc(var(--header-logo-inline-inset) + var(--menu-button-size));
         --header-logo-inline-inset-sidebar-open: calc(var(--sidebar-inline-size) + var(--header-logo-inline-inset-sidebar-closed));
+        --sidebar-block-start-padding: #{px2rem(27)};
     }
     
     // Transitions
-    --button-transition-duration: 250ms;
-    --sidebar-transition-duration: 300ms;
-    --toggle-preview-transition-duration: 300ms;
-    --mode-choice-button-transition-duration: 300ms;
+    --button-transition-duration: 150ms;
+    --sidebar-transition-duration: 200ms;
+    --toggle-preview-transition-duration: 200ms;
+    --mode-choice-button-transition-duration: 200ms;
 }

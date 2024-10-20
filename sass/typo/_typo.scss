@@ -38,9 +38,13 @@ textarea, #preview :is(pre, code) {
     h2 {
         font-size: var(--sidebar-title-text);
         font-weight: 500;
+        text-transform: uppercase;
     }
     time {
         font-size: var(--sidebar-date-text);
         font-weight: 300;
+    }
+    .document-name {
+        hyphens: auto;
     }
 }
