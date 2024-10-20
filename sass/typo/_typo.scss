@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+/** @section Typography */
+body {
+    font-family: var(--sans-font);
+}
+textarea, #preview :is(pre, code) {
+    font-family: var(--mono-font);
+}
+#preview {
+    font-family: var(--slab-font);
+}
