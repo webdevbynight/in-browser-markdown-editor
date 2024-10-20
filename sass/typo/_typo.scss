@@ -13,13 +13,34 @@ textarea, #preview :is(pre, code) {
 }
 .app-bar {
     font-size: var(--app-bar-text);
+    label {
+        font-size: var(--app-bar-label-text);
+        font-weight: 300;
+    }
+}
+#editor {
+    font-size: var(--editor-text);
+    h2,
+    label {
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+    h2 {
+        font-size: inherit;
+    }
+}
+#markdown,
+#preview {
+    line-height: var(--editor-line-height);
 }
 #sidebar {
     font-size: var(--sidebar-text);
     h2 {
         font-size: var(--sidebar-title-text);
+        font-weight: 500;
     }
     time {
         font-size: var(--sidebar-date-text);
+        font-weight: 300;
     }
 }

@@ -9,6 +9,9 @@
     --slab-font: "Roboto Slab", "DejaVu Serif", "Sitka Small", serif;
     --mono-font: "Roboto Mono", "DejaVu Sans Mono", monospace;
     --app-bar-text: #{px2rem(15)};
+    --app-bar-label-text: #{px2rem(13)};
+    --editor-text: #{px2rem(14)};
+    --editor-line-height: calc(24 / 14);
     --sidebar-text: #{px2rem(15)};
     --sidebar-title-text: #{px2rem(14)};
     --sidebar-date-text: #{px2rem(13)};

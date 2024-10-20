@@ -6,7 +6,7 @@
  * }
  */
 const webFontsToInstall = {
-    Roboto: ["Light", "Regular"],
+    Roboto: ["Light", "Medium", "Regular"],
     Roboto_Mono: ["VariableFont_wght"],
     Roboto_Slab: ["VariableFont_wght"]
 };
