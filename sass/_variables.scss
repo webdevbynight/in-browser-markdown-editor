@@ -18,6 +18,7 @@
     --editor-preview-h4-text: #{px2rem(20)};
     --editor-preview-h5-text: #{px2rem(16)};
     --editor-preview-h6-text: #{px2rem(14)};
+    --editor-confirmation-title-text: #{px2rem(20)};
     --sidebar-text: #{px2rem(15)};
     --sidebar-title-text: #{px2rem(14)};
     --sidebar-date-text: #{px2rem(13)};
@@ -55,6 +56,7 @@
     --editor-secondary-background: #1d1f22;
     --editor-tertiary-background: #2b2d31;
     --editor-quaternary-background: #5a6069;
+    --editor-quinary-background: rgb(124 129 135 / .5);
     &[data-mode="light"] {
         --editor-primary: #35393f;
         --editor-secondary: #7c8187;
@@ -62,6 +64,7 @@
         --editor-secondary-background: #f5f5f5;
         --editor-tertiary-background: #f5f5f5;
         --editor-quaternary-background: #e4e4e4;
+        --editor-quinary-background: rgb(21 22 25 / .5);
     }
 
     // Boxes, margins, paddings, gaps and shadows
@@ -91,6 +94,12 @@
     --editor-preview-blocks-radius: #{px2rem(4)};
     --editor-preview-blockquote-inline-padding-start: #{px2rem(24)};
     --editor-preview-blockquote-border: #{px2rem(4)};
+    --editor-confirmation-min-size: #{px2rem(288)};
+    --editor-confirmation-max-size: #{px2rem(343)};
+    --editor-confirmation-radius: #{px2rem(4)};
+    --editor-confirmation-padding: #{px2rem(24)};
+    --editor-confirmation-gap: #{px2rem(16)};
+    --editor-confirmation-button-size: #{px2rem(40)};
     --sidebar-inline-size: #{px2rem(250)};
     --sidebar-block-padding: #{px2rem(72)} #{px2rem(24)};
     --sidebar-inline-padding: #{px2rem(24)};

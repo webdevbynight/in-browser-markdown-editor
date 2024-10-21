@@ -1,0 +1,44 @@
+@charset "utf-8";
+@use "../buttons/mixins" as mixins;
+
+/** @section Confirmation modal dialog */
+.confirmation {
+    color: var(--editor-secondary);
+    background: var(--editor-secondary-background);
+    display: flex;
+    flex-direction: column;
+    gap: var(--editor-confirmation-gap);
+    box-sizing: border-box;
+    inline-size: clamp(var(--editor-confirmation-min-size), calc(343 / 375 * 100dvi), var(--editor-confirmation-max-size));
+    padding: var(--editor-confirmation-padding);
+    margin: 0;
+    border: none;
+    border-radius: var(--editor-confirmation-radius);
+    position: fixed;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    &::backdrop {
+        background: var(--editor-quinary-background);
+    }
+    h2 {
+        color: var(--editor-primary);
+    }
+    p {
+        &:last-of-type {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+    button {
+        @include mixins.primary-button;
+        min-block-size: var(--editor-confirmation-button-size);
+        transition: background var(--button-transition-duration) ease-in;
+        &:hover,
+        &:focus {
+            background: var(--button-primary-background-hover);
+        }
+    }
+}

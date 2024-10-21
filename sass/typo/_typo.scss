@@ -13,8 +13,11 @@ body {
         font-weight: 300;
     }
 }
-#editor {
+#editor,
+.confirmation {
     font-size: var(--editor-text);
+}
+#editor {
     section > h2 {
         font-size: inherit;
         font-weight: 500;
@@ -22,8 +25,12 @@ body {
     }
 }
 #markdown,
-#preview {
+#preview,
+.confirmation {
     line-height: var(--editor-line-height);
+    button {
+        font-family: var(--sans-font);
+    }
 }
 #markdown, #preview :is(pre, code) {
     font-family: var(--mono-font);
@@ -47,6 +54,13 @@ body {
     }
     pre {
         font-size: inherit;
+    }
+}
+.confirmation {
+    font-family: var(--slab-font);
+    h2 {
+        font-size: var(--editor-confirmation-title-text);
+        line-height: initial;
     }
 }
 #sidebar {
