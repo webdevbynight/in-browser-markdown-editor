@@ -12,6 +12,12 @@
     --app-bar-label-text: #{px2rem(13)};
     --editor-text: #{px2rem(14)};
     --editor-line-height: calc(24 / 14);
+    --editor-preview-h1-text: #{px2rem(32)};
+    --editor-preview-h2-text: #{px2rem(28)};
+    --editor-preview-h3-text: #{px2rem(24)};
+    --editor-preview-h4-text: #{px2rem(20)};
+    --editor-preview-h5-text: #{px2rem(16)};
+    --editor-preview-h6-text: #{px2rem(14)};
     --sidebar-text: #{px2rem(15)};
     --sidebar-title-text: #{px2rem(14)};
     --sidebar-date-text: #{px2rem(13)};
@@ -29,6 +35,7 @@
     --colour-1000: #151619;
     --primary: white;
     --secondary: #7c8187;
+    --tertiary: #e46643;
     --primary-background: #2b2d31;
     --secondary-background: #1d1f22;
     --tertiary-background: #5a6069;
@@ -40,6 +47,22 @@
     --menu-button-background-hover: #e46643;
     --mode-choice-button-primary: #5a6069;
     --mode-choice-button-secondary: white;
+
+    // Colours submitted to user’s preferences
+    --editor-primary: white;
+    --editor-secondary: #c1c4cb;
+    --editor-primary-background: #151619;
+    --editor-secondary-background: #1d1f22;
+    --editor-tertiary-background: #2b2d31;
+    --editor-quaternary-background: #5a6069;
+    &[data-mode="light"] {
+        --editor-primary: #35393f;
+        --editor-secondary: #7c8187;
+        --editor-primary-background: white;
+        --editor-secondary-background: #f5f5f5;
+        --editor-tertiary-background: #f5f5f5;
+        --editor-quaternary-background: #e4e4e4;
+    }
 
     // Boxes, margins, paddings, gaps and shadows
     --button-radius: #{px2rem(4)};
@@ -54,6 +77,20 @@
     --app-bar-input-block-padding-hover: #{px2rem(5)};
     --app-bar-input-gap: #{px2rem(3)} #{px2rem(16)};
     --app-bar-buttons-gap: #{px2rem(24)};
+    --editor-label-padding: #{px2rem(12)} #{px2rem(48)} #{px2rem(14)} #{px2rem(16)};
+    --editor-markdown-block-padding: #{px2rem(16)};
+    --editor-markdown-inline-padding: #{px2rem(12)};
+    --editor-preview-block-margin: #{px2rem(16)};
+    --editor-preview-inline-margin: #{px2rem(20)};
+    --editor-preview-element-block-margin: #{px2rem(20)};
+    --editor-preview-h1-block-margin-end: #{px2rem(22)};
+    --editor-preview-list-inline-padding-start: #{px2rem(19)};
+    --editor-preview-list-inline-margin-start: #{px2rem(24)};
+    --editor-preview-li-block-margin: #{px2rem(4)};
+    --editor-preview-blocks-padding: #{px2rem(24)};
+    --editor-preview-blocks-radius: #{px2rem(4)};
+    --editor-preview-blockquote-inline-padding-start: #{px2rem(24)};
+    --editor-preview-blockquote-border: #{px2rem(4)};
     --sidebar-inline-size: #{px2rem(250)};
     --sidebar-block-padding: #{px2rem(72)} #{px2rem(24)};
     --sidebar-inline-padding: #{px2rem(24)};
@@ -83,6 +120,11 @@
         --menu-button-size: #{px2rem(72)};
         --app-bar-block-padding: #{px2rem(17)} #{px2rem(14)};
         --app-bar-inline-padding: #{px2rem(96)} #{px2rem(16)};
+        --editor-markdown-block-padding-start: #{px2rem(9)};
+        --editor-markdown-inline-padding: #{px2rem(16)};
+        --editor-preview-inline-size: #{px2rem(672)};
+        --editor-preview-block-margin: #{px2rem(22)} #{px2rem(19)};
+        --editor-preview-inline-margin: #{px2rem(24)};
         --toggle-preview-block-inset: #{px2rem(84)};
         --save-button-padding: #{px2rem(11)} #{px2rem(16)};
     }

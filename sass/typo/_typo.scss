@@ -5,12 +5,6 @@ body {
     font-family: var(--sans-font);
     line-height: normal;
 }
-textarea, #preview :is(pre, code) {
-    font-family: var(--mono-font);
-}
-#preview {
-    font-family: var(--slab-font);
-}
 .app-bar {
     font-size: var(--app-bar-text);
     line-height: 1.1;
@@ -21,18 +15,39 @@ textarea, #preview :is(pre, code) {
 }
 #editor {
     font-size: var(--editor-text);
-    h2,
-    label {
+    section > h2 {
+        font-size: inherit;
         font-weight: 500;
         text-transform: uppercase;
-    }
-    h2 {
-        font-size: inherit;
     }
 }
 #markdown,
 #preview {
     line-height: var(--editor-line-height);
+}
+#markdown, #preview :is(pre, code) {
+    font-family: var(--mono-font);
+}
+#markdown {
+    white-space: pre-wrap;
+}
+#preview {
+    font-family: var(--slab-font);
+    @for $i from 1 through 6 {
+        h#{$i} {
+            font-size: var(--editor-preview-h#{$i}-text);
+            line-height: normal;
+        }
+    }
+    h2 {
+        font-weight: 300;
+    }
+    blockquote {
+        font-weight: bold;
+    }
+    pre {
+        font-size: inherit;
+    }
 }
 #sidebar {
     font-size: var(--sidebar-text);

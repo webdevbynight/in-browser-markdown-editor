@@ -1,0 +1,87 @@
+@charset "utf-8";
+@use "../base/mixins" as *;
+
+/** @section Editor */
+#editor {
+    color: var(--editor-primary);
+    background: var(--editor-primary-background);
+    section {
+        display: flex;
+        flex-direction: column;
+        > :first-child {
+            padding: var(--editor-label-padding);
+        }
+        > :not(:first-child) {
+            flex: 1;
+        }
+        > h2 {
+            color: var(--editor-secondary);
+            background: var(--editor-secondary-background);
+        }
+    }
+    @include css-media-queries($from-breakpoint: two-column-editor) {
+        section {
+            &:first-of-type {
+                border-inline-end: 1px solid var(--editor-quaternary-background);
+            }
+        }
+    }
+}
+#markdown {
+    color: var(--editor-secondary);
+    padding: var(--editor-markdown-block-padding) var(--editor-markdown-inline-padding);
+    border: none;
+    appearance: none;
+    resize: none;
+    @include css-media-queries($from-breakpoint: two-column-editor) {
+        padding-block-start: var(--editor-markdown-block-padding-start);
+    }
+}
+#preview {
+    margin: var(--editor-preview-block-margin) var(--editor-preview-inline-margin);
+    > * {
+        margin-block: var(--editor-preview-element-block-margin);
+    }
+    h1 {
+        margin-block: 0 var(--editor-preview-h1-block-margin-end);
+    }
+    h6,
+    ul > li::marker {
+        color: var(--tertiary);
+    }
+    ul, ol, p {
+        color: var(--editor-secondary);
+    }
+    ul, ol {
+        padding-inline-start: var(--editor-preview-list-inline-padding-start);
+        margin-inline-start: var(--editor-preview-list-inline-margin-start);
+    }
+    li {
+        margin-block: var(--editor-preview-li-block-margin);
+    }
+    blockquote, pre {
+        background: var(--editor-tertiary-background);
+        padding: var(--editor-preview-blocks-padding);
+        border-radius: var(--editor-preview-blocks-radius);
+    }
+    blockquote {
+        padding-inline-start: var(--editor-preview-blockquote-inline-padding-start);
+        border-inline-start: var(--editor-preview-blockquote-border) solid var(--tertiary);
+        overflow: hidden;
+        * {
+            color: inherit;
+        }
+    }
+    code {
+        color: var(--editor-primary);
+    }
+    a {
+        color: inherit;
+    }
+    @include css-media-queries($from-breakpoint: two-column-editor) {
+        .active-preview & {
+            max-inline-size: var(--editor-preview-inline-size);
+            margin-inline: auto;
+        }
+    }
+}
