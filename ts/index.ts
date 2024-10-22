@@ -5,7 +5,8 @@ const header = document.getElementById("header");
 const main = document.querySelector("main");
 const app = document.getElementById("app");
 const editor = document.getElementById("editor");
-if (header && main && app && editor) {
+const sidebar = document.getElementById("sidebar");
+if (header && main && app && editor && sidebar) {
     // Slide the sidebar
     const menuButton: ElementOrNull<HTMLButtonElement> = header.querySelector("#header button");
     if (menuButton) {
@@ -15,6 +16,7 @@ if (header && main && app && editor) {
             main.classList.toggle("active-sidebar");
             const label = `${isActive(this) ? "Hide" : "Show"} sidebar`;
             updateLabel(this, label);
+            if (isActive(this)) sidebar.focus();
         });
     }
 

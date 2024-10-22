@@ -21,27 +21,49 @@ export const updateLabel = (buttonElement: HTMLButtonElement, label: string): vo
 };
 
 /**
+ * Closes and removes the `dialog` element from the DOM.
+ * 
+ * @param dialogElement - The `dialog` element.
+ */
+const closeAndRemoveDialog = (dialogElement: HTMLDialogElement): void => {
+    dialogElement.close();
+    dialogElement.remove();
+};
+
+/**
  * Generates the `dialog` element.
  * 
  * @param documentName - The document name to use.
  * @returns The `dialog` element.
  */
 export const generateDialog = (documentName: string): HTMLDialogElement => {
+    const dialogLabel = "Delete this document?";
+    const dialogLabelId = "confirmation-label";
+    const dialogDescription = `Are you sure you want to delete the ‘${documentName}’ document and its contents? This action cannot be reversed.`;
+    const dialogDescriptionId = "confirmation-description";
     const dialog = document.createElement("dialog");
     dialog.className = "confirmation";
+    dialog.setAttribute("role", "alertdialog");
     dialog.setAttribute("aria-live", "assertive");
+    dialog.setAttribute("aria-modal", "true");
+    dialog.setAttribute("aria-labelledby", dialogLabelId);
+    dialog.setAttribute("aria-describedby", dialogDescriptionId);
     const h2 = document.createElement("h2");
-    h2.textContent = "Delete this document?";
+    h2.id = dialogLabelId;
+    h2.textContent = dialogLabel;
     const p = document.createElement("p");
-    p.innerText = `Are you sure you want to delete the ‘${documentName}’ document and its contents? This action cannot be reversed.`;
+    p.id = dialogDescriptionId;
+    p.innerText = dialogDescription;
     const buttonContainer = document.createElement("p");
     const button = document.createElement("button");
     button.type = "button";
     button.autofocus = true;
     button.textContent = "Confirm & Delete";
     button.addEventListener("click", () => {
-        dialog.close();
-        dialog.remove();
+        closeAndRemoveDialog(dialog);
+    });
+    button.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeAndRemoveDialog(dialog);
     });
     buttonContainer.appendChild(button);
     dialog.appendChild(h2);
