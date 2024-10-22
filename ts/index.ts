@@ -1,5 +1,5 @@
 import type { ColourMode, ElementOrNull } from "./types.ts";
-import { generateDialog, getMode, isActive, setMode, updateLabel } from "./utils.js";
+import { createDocument, displayFirstDocument, displayLastDocument, fetchDocuments, generateDialog, getDocuments, getMode, isActive, saveChanges, saveDocuments, setDocumentsList, setMode, updateLabel } from "./utils.js";
 
 const header = document.getElementById("header");
 const main = document.querySelector("main");
@@ -35,10 +35,11 @@ if (header && main && app && editor && sidebar) {
     const deleteButton = app.querySelector<HTMLButtonElement>(`button[type="button"][title="Delete"]`);
     if (deleteButton) {
         deleteButton.addEventListener("click", () => {
+            const documentId = Number(app.dataset.documentId);
             const documentNameInput = document.getElementById("document-name");
-            if (documentNameInput) {
+            if (documentId && documentNameInput) {
                 const documentName = documentNameInput.dataset.documentName ?? "";
-                const dialog = generateDialog(documentName);
+                const dialog = generateDialog(documentId, documentName);
                 document.body.appendChild(dialog);
                 dialog.showModal();
             }
@@ -52,6 +53,35 @@ if (header && main && app && editor && sidebar) {
         modeChoice.addEventListener("click", function () {
             const chosenMode: ColourMode = this.checked ? "light" : "dark";
             setMode(chosenMode);
+        });
+    }
+
+    // Documents list (with saving in localStorage if necessary)
+    const initialData = !getDocuments() ? await fetchDocuments() : null;
+    if (initialData) saveDocuments(initialData);
+    const documents = getDocuments();
+    if (documents) {
+        setDocumentsList(sidebar, documents);
+        displayFirstDocument(sidebar);
+
+        // Save changes
+        app.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            saveChanges(this as HTMLFormElement, documents);
+            setDocumentsList(sidebar, documents);
+        });
+    }
+
+    // New document
+    const newDocumentButton: ElementOrNull<HTMLButtonElement> = sidebar.querySelector("p:first-of-type button");
+    if (newDocumentButton) {
+        newDocumentButton.addEventListener("click", () => {
+            createDocument();
+            const updatedDocuments = getDocuments();
+            if (updatedDocuments) {
+                setDocumentsList(sidebar, updatedDocuments);
+                displayLastDocument(sidebar);
+            }
         });
     }
 }

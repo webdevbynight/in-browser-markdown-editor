@@ -74,7 +74,7 @@
                 <div class="app-bar">
                     <p>
                         <label for="document-name">Document name</label>
-                        <input id="document-name" name="document-name" type="text" value="welcome.md" data-document-name="welcome.md">
+                        <input id="document-name" name="document-name" type="text">
                     </p>
                     <p>
                         <button type="button" title="Delete" tabindex="1">
@@ -100,42 +100,7 @@
                 <div id="editor">
                     <section>
                         <h2>Markdown</h2>
-                        <div id="markdown" contenteditable="true">
-# Welcome to Markdown
-
-Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents.
-
-## How to use this?
-
-1. Write markdown in the markdown editor window
-2. See the rendered markdown in the preview window
-
-### Features
-
-- Create headings, paragraphs, links, blockquotes, inline-code, code blocks, and lists
-- Name and save the document to access again later
-- Choose between Light or Dark mode depending on your preference
-
-> This is an example of a blockquote. If you would like to learn more about markdown syntax, you can visit this [markdown cheatsheet](https://www.markdownguide.org/cheat-sheet/).
-
-#### Headings
-
-To create a heading, add the hash sign (#) before the heading. The number of number signs you use should correspond to the heading level. You'll see in this guide that we've used all six heading levels (not necessarily in the correct way you should use headings!) to illustrate how they should look.
-
-##### Lists
-
-You can see examples of ordered and unordered lists above.
-
-###### Code Blocks
-
-This markdown editor allows for inline-code snippets, like this: `&lt;p&gt;I'm inline&lt;/p&gt;`. It also allows for larger code blocks like this:
-
-```
-&lt;main&gt;
-  &lt;h1&gt;This is a larger code block&lt;/h1&gt;
-&lt;/main&gt;
-```
-                        </div>
+                        <div id="markdown" contenteditable="true"></div>
                     </section>
                     <section>
                         <h2>Preview</h2>
@@ -179,22 +144,6 @@ This markdown editor allows for inline-code snippets, like this: `&lt;p&gt;I'm i
                 <p>
                     <button type="button">New Document</button>
                 </p>
-                <ul>
-                    <li>
-                        <button type="button">
-                            <time datetime="2022-04-01">01 April 2022</time>
-                            <span class="document-name">untitled-document.md</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button">
-                            <time datetime="2022-04-01">01 April 2022</time>
-                            <span class="document-name">welcome.md</span>
-                        </button>
-                    </li>
-                </ul>
-                
-                <!-- Begin mode choice -->
                 <form>
                     <p>
                         <input id="mode-choice" name="mode-choice" type="checkbox">
@@ -203,8 +152,6 @@ This markdown editor allows for inline-code snippets, like this: `&lt;p&gt;I'm i
                         </label>
                     </p>
                 </form>
-                <!-- End mode choice -->
-
             </aside>
             <!-- End sidebar -->
 
