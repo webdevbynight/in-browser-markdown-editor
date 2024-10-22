@@ -1,3 +1,4 @@
+import type { ElementOrNull } from "./types.ts";
 import { generateDialog, isActive, updateLabel } from "./utils.js";
 
 const header = document.getElementById("header");
@@ -6,7 +7,7 @@ const app = document.getElementById("app");
 const editor = document.getElementById("editor");
 if (header && main && app && editor) {
     // Slide the sidebar
-    const menuButton: HTMLButtonElement | null = header.querySelector("#header button");
+    const menuButton: ElementOrNull<HTMLButtonElement> = header.querySelector("#header button");
     if (menuButton) {
         menuButton.addEventListener("click", function () {
             this.classList.toggle("active");
@@ -18,7 +19,7 @@ if (header && main && app && editor) {
     }
 
     // Toggle preview
-    const togglePreviewButton: HTMLButtonElement | null = app.querySelector(".toggle-preview button");
+    const togglePreviewButton: ElementOrNull<HTMLButtonElement> = app.querySelector(".toggle-preview button");
     if (togglePreviewButton) {
         togglePreviewButton.addEventListener("click", function () {
             this.classList.toggle("active");
