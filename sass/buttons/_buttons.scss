@@ -147,8 +147,8 @@ button {
             background-position-y: -48px;
             aspect-ratio: 1;
         }
-        &:has(:checked) {
-            label {
+        :checked {
+            + label {
                 &::after {
                     inset-inline-start: calc(var(--mode-choice-button-size) - var(--mode-choice-button-inner-size) - var(--mode-choice-button-inline-inset));
                 }

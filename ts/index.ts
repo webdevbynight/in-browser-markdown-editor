@@ -1,5 +1,5 @@
-import type { ElementOrNull } from "./types.ts";
-import { generateDialog, isActive, updateLabel } from "./utils.js";
+import type { ColourMode, ElementOrNull } from "./types.ts";
+import { generateDialog, getMode, isActive, setMode, updateLabel } from "./utils.js";
 
 const header = document.getElementById("header");
 const main = document.querySelector("main");
@@ -42,6 +42,16 @@ if (header && main && app && editor && sidebar) {
                 document.body.appendChild(dialog);
                 dialog.showModal();
             }
+        });
+    }
+
+    // Mode choice
+    const modeChoice: ElementOrNull<HTMLInputElement> = sidebar.querySelector(`form input[type="checkbox"]`);
+    if (modeChoice) {
+        getMode(modeChoice);
+        modeChoice.addEventListener("click", function () {
+            const chosenMode: ColourMode = this.checked ? "light" : "dark";
+            setMode(chosenMode);
         });
     }
 }

@@ -1,3 +1,5 @@
+import type { ColourMode } from "./types.ts";
+
 /**
  * Checks whether the `button` element has the `.active` class or not.
  * 
@@ -70,4 +72,27 @@ export const generateDialog = (documentName: string): HTMLDialogElement => {
     dialog.appendChild(p);
     dialog.appendChild(buttonContainer);
     return dialog;
+};
+
+/**
+ * Gets the mode choice.
+ * 
+ * @param modeChoice - The checkbox managing the mode choice.
+ */
+export const getMode = (modeChoice: HTMLInputElement) => {
+    const mode = localStorage.getItem("mode");
+    if (mode) {
+        document.documentElement.dataset.mode = mode;
+        modeChoice.checked = (mode === "light");
+    }
+};
+
+/**
+ * Sets the mode choice and saves it.
+ * 
+ * @param mode - The chosen mode.
+ */
+export const setMode = (mode: ColourMode): void => {
+    document.documentElement.dataset.mode = mode;
+    localStorage.setItem("mode", mode);
 };
