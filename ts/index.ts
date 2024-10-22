@@ -1,3 +1,25 @@
+/**
+ * Checks whether the `button` element has the `.active` class or not.
+ * 
+ * @param buttonElement - The `button` element to check.
+ * @returns True if the element has the `.active` class, false otherwise.
+ */
+const isActive = (buttonElement: HTMLButtonElement): boolean => buttonElement.classList.contains("active");
+
+/**
+ * Updates the label of the button.
+ * 
+ * @param buttonElement - The `button` element to update.
+ * @param label - The label to use for the update.
+ */
+const updateLabel = (buttonElement: HTMLButtonElement, label: string): void => {
+    const textLabel = buttonElement.querySelector(".sr-only");
+    if (textLabel) {
+        buttonElement.title = label;
+        textLabel.textContent = label;
+    }
+};
+
 // Slide the sidebar
 const header = document.getElementById("header");
 const main = document.querySelector("main");
@@ -5,15 +27,11 @@ if (header && main) {
     const menuButton: HTMLButtonElement | null = header.querySelector("#header button");
     if (menuButton) {
         menuButton.addEventListener("click", function () {
-            const text = this.querySelector(".sr-only");
-            if (text) {
-                this.classList.toggle("active");
-                header.classList.toggle("active-sidebar");
-                main.classList.toggle("active-sidebar");
-                const label = `${this.classList.contains("active") ? "Hide" : "Show"} sidebar`;
-                this.title = label;
-                text.textContent = label;
-            }
+            this.classList.toggle("active");
+            header.classList.toggle("active-sidebar");
+            main.classList.toggle("active-sidebar");
+            const label = `${isActive(this) ? "Hide" : "Show"} sidebar`;
+            updateLabel(this, label);
         });
     }
 }
@@ -27,6 +45,8 @@ if (app && editor) {
         togglePreviewButton.addEventListener("click", function () {
             this.classList.toggle("active");
             editor.classList.toggle("active-preview");
+            const label = `${isActive(this) ? "Reduce" : "Expand"} preview`;
+            updateLabel(this, label);
         });
     }
 }
