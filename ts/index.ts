@@ -5,9 +5,15 @@ if (header && main) {
     const menuButton: HTMLButtonElement | null = header.querySelector("#header button");
     if (menuButton) {
         menuButton.addEventListener("click", function () {
-            this.classList.toggle("active");
-            header.classList.toggle("active-sidebar");
-            main.classList.toggle("active-sidebar");
+            const text = this.querySelector(".sr-only");
+            if (text) {
+                this.classList.toggle("active");
+                header.classList.toggle("active-sidebar");
+                main.classList.toggle("active-sidebar");
+                const label = `${this.classList.contains("active") ? "Hide" : "Show"} sidebar`;
+                this.title = label;
+                text.textContent = label;
+            }
         });
     }
 }
@@ -26,16 +32,6 @@ if (app && editor) {
 }
 
 // Show confirmation dialog before deleting
-
-// <!-- Begin modal dialog -->
-// <dialog class="confirmation" aria-live="assertive" open>
-//     <h2></h2>
-//     <p>Are you sure you want to delete the ‘welcome.md’ document and its contents? This action cannot be reversed.</p>
-//     <p>
-//         <button type="button" autofocus></button>
-//     </p>
-// </dialog>
-// <!-- End modal dialog -->
 const deleteButton = app?.querySelector<HTMLButtonElement>(`button[type="button"][title="Delete"]`);
 if (deleteButton) {
     deleteButton.addEventListener("click", () => {
