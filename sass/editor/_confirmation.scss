@@ -35,10 +35,5 @@
     button {
         @include mixins.primary-button;
         min-block-size: var(--editor-confirmation-button-size);
-        transition: background var(--button-transition-duration) ease-in;
-        &:hover,
-        &:focus {
-            background: var(--button-primary-background-hover);
-        }
     }
 }

@@ -35,6 +35,15 @@
                 height: 16px;
                 content: "";
             }
+            &:hover,
+            &:focus {
+                .document-name {
+                    color: var(--tertiary);
+                }
+            }
+            .document-name {
+                transition: color var(--button-transition-duration) ease-in;
+            }
         }
     }
     li {

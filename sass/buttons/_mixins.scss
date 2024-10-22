@@ -5,4 +5,9 @@
     color: var(--primary);
     background: var(--button-primary-background);
     border-radius: var(--button-radius);
+    transition: background var(--button-transition-duration) ease-in;
+    &:hover,
+    &:focus {
+        background: var(--button-primary-background-hover);
+    }
 }
