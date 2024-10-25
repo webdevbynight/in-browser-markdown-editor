@@ -16,5 +16,5 @@
         "sourceMap": true,
         "lib": ["ES2022", "DOM", "DOM.Iterable"]
     },
-    "exclude": ["./tools"]
+    "exclude": ["./tools", "./vitest.config.ts"]
 }

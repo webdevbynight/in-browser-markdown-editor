@@ -19,3 +19,9 @@ export interface MarkdownDocument {
     createdAt: DateFormat;
     updatedAt?: DateFormat;
 }
+const lineTypes = ["blockquote", "heading", "ol", "paragraph", "pre", "ul"] as const;
+export type LineType = typeof lineTypes[number] | null;
+const headingLevels = [1, 2, 3, 4, 5, 6] as const;
+export type HeadingLevel = typeof headingLevels[number] | null;
+type BlockElementsKeys = Exclude<LineType, "paragraph" | null>;
+export type BlockElements = Record<BlockElementsKeys, string>;
