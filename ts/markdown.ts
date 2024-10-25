@@ -167,13 +167,14 @@ export default class Markdown {
         for (const type of typeKeys) {
             const elementPattern = this.#getElementPattern(type as keyof BlockElements);
             if (elementPattern.test(line)) {
-                parsedLine = this.sanitise(parsedLine.replace(elementPattern, ""));
+                parsedLine = parsedLine.replace(elementPattern, "");
                 break;
             }
         }
-        if (type === "ol" || type === "ul") parsedLine = `<li>${this.sanitise(parsedLine)}</li>`;
-        else parsedLine = this.sanitise(parsedLine);
-        return this.convertInlineElements(parsedLine);
+        parsedLine = this.sanitise(parsedLine);
+        if (type === "ol" || type === "ul") parsedLine = `<li>${parsedLine}</li>`;
+        parsedLine = this.convertInlineElements(parsedLine);
+        return parsedLine;
     }
 
     /**
