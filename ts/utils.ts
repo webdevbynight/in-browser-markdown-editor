@@ -1,5 +1,7 @@
 import type { ColourMode, DateFormat, Day, DocumentName, ElementOrNull, InitialData, MarkdownDocument, Month, Year } from "./types.ts";
 
+import Markdown from "./markdown.js";
+
 /**
  * Formats the initial data.
  * 
@@ -53,7 +55,7 @@ const closeAndRemoveDialog = (dialogElement: HTMLDialogElement): void => {
 };
 
 /**
- * Display the selected document.
+ * Displays the selected document.
  * 
  * @param app - The element containing the app form.
  * @param markdownDocument - The document to display.
@@ -66,6 +68,7 @@ const displayDocument = (app: HTMLElement, markdownDocument: MarkdownDocument): 
         documentNameInput.value = markdownDocument.name;
         documentNameInput.dataset.documentName = markdownDocument.name;
         markdown.textContent = markdownDocument.content;
+        displayPreview(app, markdownDocument.content);
     }
 };
 
@@ -250,6 +253,20 @@ export const displayFirstDocument = (sidebar: HTMLElement): void => {
  */
 export const displayLastDocument = (sidebar: HTMLElement): void => {
     sidebar.querySelector("li:last-child button")?.dispatchEvent(new MouseEvent("click"));
+};
+
+/**
+ * Displays the preview of the document.
+ * 
+ * @param app - The element containing the app form.
+ * @param document - The Markdown document to convert to HTML for the preview.
+ */
+export const displayPreview = (app: HTMLElement, document: string): void => {
+    const preview = app.querySelector("#editor #preview");
+    if (preview) {
+        const markdownContent = new Markdown(document);
+        preview.innerHTML = markdownContent.convert();
+    }
 };
 
 /**

@@ -1,5 +1,6 @@
 import type { ColourMode, ElementOrNull } from "./types.ts";
-import { createDocument, displayFirstDocument, displayLastDocument, fetchDocuments, generateDialog, getDocuments, getMode, isActive, saveChanges, saveDocuments, setDocumentsList, setMode, updateLabel } from "./utils.js";
+
+import { createDocument, displayFirstDocument, displayLastDocument, displayPreview, fetchDocuments, generateDialog, getDocuments, getMode, isActive, saveChanges, saveDocuments, setDocumentsList, setMode, updateLabel } from "./utils.js";
 
 const header = document.getElementById("header");
 const main = document.querySelector("main");
@@ -82,6 +83,15 @@ if (header && main && app && editor && sidebar) {
                 setDocumentsList(sidebar, updatedDocuments);
                 displayLastDocument(sidebar);
             }
+        });
+    }
+
+    // Preview update
+    const markdown = document.getElementById("markdown");
+    const preview = document.getElementById("preview");
+    if (markdown && preview) {
+        markdown.addEventListener("input", function () {
+            displayPreview(app, this.innerText);
         });
     }
 }
