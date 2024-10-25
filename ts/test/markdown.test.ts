@@ -83,6 +83,10 @@ it("parses the line without the heading tag", () => {
     expect(new Markdown("").parseLine("###### This is a level-6 heading", "heading")).toBe("This is a level-6 heading");
 });
 
+it("parses the entire line with 7+ #", () => {
+    expect(new Markdown("").parseLine("####### This is a level-7 heading, which does not exist", null)).toBe("####### This is a level-7 heading, which does not exist");
+});
+
 it("parses the line without the blockquote tag", () => {
     expect(new Markdown("").parseLine("> This is a quote", "blockquote")).toBe("This is a quote");
 });
