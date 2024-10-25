@@ -67,7 +67,7 @@ const displayDocument = (app: HTMLElement, markdownDocument: MarkdownDocument): 
         app.dataset.documentId = String(markdownDocument.id);
         documentNameInput.value = markdownDocument.name;
         documentNameInput.dataset.documentName = markdownDocument.name;
-        markdown.textContent = markdownDocument.content;
+        markdown.innerText = markdownDocument.content;
         displayPreview(app, markdownDocument.content);
     }
 };
@@ -280,7 +280,7 @@ export const saveChanges = (form: HTMLFormElement, documents: MarkdownDocument[]
     if (documentId) {
         const findDocument = (document: MarkdownDocument): boolean => document.id === Number(documentId);
         const formData = new FormData(form);
-        const markdown = form.querySelector("#markdown")?.textContent;
+        const markdown = form.querySelector<HTMLElement>("#markdown")?.innerText;
         const index = documents.findIndex(findDocument);
         const document = documents[index];
         if (document && index !== -1) {
